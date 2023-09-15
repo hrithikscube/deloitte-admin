@@ -1,0 +1,367 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Nunito Regular';
+  src: url('./assets/fonts/Nunito-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Medium';
+  src: url('./assets/fonts/Nunito-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Bold';
+  src: url('./assets/fonts/Nunito-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito SemiBold';
+  src: url('./assets/fonts/Nunito-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Black';
+  src: url('./assets/fonts/Nunito-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Light';
+  src: url('./assets/fonts/Nunito-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  @apply font-nunitoRegular;
+}
+
+
+.menu {
+  > a {
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+    }
+  }
+}
+
+.home-background{
+  background-image: url('./assets/images/home-bg.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menu a {
+  color: #FF8059;
+}
+
+.is-sub-menu {
+  > a {
+    position: relative;
+    &::after {
+      content: '';
+      background-image: 'assets/icons/lightArrows/Right2Light.svg';
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      right: 15px;
+    }
+  }
+}
+
+.loader {
+  @apply bg-CalmWaters flex  fixed inset-0 z-50 items-center justify-center text-SpaceCadet bg-opacity-50;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.layout-menu {
+  background: #f1f4f8;
+  color: #141c4c;
+  z-index: 999;
+}
+
+.gradient-aside {
+  background:#2B2F31;
+}
+
+.active-link {
+  @apply cursor-pointer text-SpaceCadet;
+  > a {
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+  > a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.submenu {
+  li.active {
+    background: white;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.25);
+  }
+  li {
+    cursor: pointer;
+    padding: 8px 13px;
+    margin-left: 2.5rem;
+    margin-right: 14px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    position: relative;
+    &:hover {
+      background: white;
+    }
+    &::after {
+      width: 1px;
+      height: 113%;
+      content: '';
+      display: block;
+      background: #141c4c;
+      margin: 0;
+      position: absolute;
+      left: -14px;
+      bottom: 0;
+      top: -1px;
+    }
+  }
+}
+
+.custom-date-picker {
+  .MuiInputBase-formControl {
+    border-radius: 10px !important;
+    color: #141c4c !important;
+  }
+
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-radius: 10px !important;
+  }
+  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+    border-radius: 10px !important;
+  }
+  .MuiOutlinedInput-notchedOutline:hover {
+    border-radius: 10px !important;
+  }
+
+  .error-state {
+    .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #ef4949 !important;
+      border-radius: 10px !important;
+    }
+    .MuiFormLabel-root-MuiInputLabel-root {
+      color: #ef4949 !important;
+      background-color: #404050;
+    }
+    .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+      border-color: #ef4949 !important;
+      border-radius: 10px !important;
+    }
+  }
+}
+.date-range-picker {
+  .custom-label {
+    color: #6a6a78;
+    position: relative;
+    top: 12px;
+  }
+  .toggle-label {
+    transform: translateY(-15px);
+    font-size: 10px;
+  }
+}
+
+.react-datepicker-wrapper input {
+  border: none !important;
+  color: #141c4c;
+  background-color: transparent;
+  outline: none;
+}
+
+.filters {
+  .MuiOutlinedInput-root {
+    height: 48px !important;
+  }
+  .date-range-picker {
+    height: 48px !important;
+  }
+}
+
+.date_range_filter {
+  .custom-select-input {
+    width: 200px;
+  }
+  .MuiOutlinedInput-root {
+    height: 48px !important;
+  }
+  .date-range-picker {
+    height: 48px !important;
+  }
+}
+
+.file-upload-box {
+  @apply p-3;
+  border-radius: 8px;
+  display: block;
+  justify-items: center;
+  align-items: center;
+  border: 1px dashed #e7e8ed;
+}
+.file-upload-active {
+  border: 1px dashed #F9AF2F;
+}
+
+.file-upload-error {
+  border: 1px dashed #ef4949;
+}
+
+.cancel-btn {
+  border-radius: 8px;
+  border: 1px solid #ef4949;
+  font-size: 12px;
+  color: #ef4949;
+  padding: 8px 22px;
+}
+
+.upload-btn {
+  border-radius: 8px;
+  @apply border border-SpaceCadet text-sm text-SpaceCadet;
+  padding: 8px 22px;
+}
+
+.default_container {
+  @apply border-DreamyCloud border rounded-lg p-3 sm:p-6;
+}
+
+.subdiv {
+  @apply items-center gap-y-4 sm:gap-y-6 rounded-lg p-[17px] sm:p-6 font-nunitoRegular;
+}
+
+.subheading {
+  @apply text-base sm:text-lg  sm:py-2 font-bold text-SpaceCadet;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.seconday-heading {
+  @apply text-primarBtn text-base font-semibold;
+}
+
+.w-inherit {
+  width: inherit !important;
+}
+.MuiPaper-root-MuiAccordion-root:before {
+  height: 0 !important;
+}
+.MuiAccordionSummary-root.Mui-expanded {
+  min-height: 48px !important;
+}
+
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+.rdw-editor-main {
+  border: 1px solid #404050;
+  padding-left: 10px;
+  border-radius: 8px;
+  min-height: 130px;
+  max-height: 100%;
+}
+
+#collapsiveTable .MuiTableCell-head {
+  line-height: 14px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.debug {
+  @apply border border-red-800;
+}
+
+.apexcharts-tooltip {
+  background: #141c4c !important;
+}
+
+.arrow_box {
+  padding: 10px;
+  position: relative;
+  background: #141c4c !important;
+}
+.break-word-all{
+  word-break: break-word;
+}
+
+.react-datepicker-popper {  z-index: 3 !important }
+.react-datepicker {  z-index: 3 !important }
+
+
+.emoji-404{
+
+  position: relative;
+  animation: mymove 2.5s infinite;
+}
+
+@keyframes mymove {
+  33%   {top: 0px;}
+  66%  {top: 20px;}
+  100%  {top: 0px}
+}
+
+.disable-action{
+  opacity: .35;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.dashboardAnalylitics {
+  &:hover {
+      background: #07283B;
+      box-shadow: 0px 7px 21px rgba(0, 0, 0, 0.2);
+      > div {
+          background: #F9AF2F;
+          box-shadow: 0px 7px 21px rgba(0, 0, 0, 0.2);
+          > .cards-img {
+              display: none;
+          }
+          > .cards-p {
+              display: block;
+          }
+      }
+      > p {
+          color: #ffffff;
+      }
+  }
+}
+
+.uploadVisitorImageContainer{
+  border-radius: 16px;
+  border: 1px dashed var(--text-dark, #2B2C34);
+  background: #F1F4F8;
+}
