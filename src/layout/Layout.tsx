@@ -38,14 +38,12 @@ import visitorActive from "../assets/icons/SidebarIcons/visitorActive.svg";
 import MenuOpen from "../assets/images/menu-open.svg";
 import MenuClose from "../assets/images/menu-close.svg";
 import ManageDeviceListing from "../components/Pages/ManageDevice/Listing/Listing";
-import ManageVisitorsListing from "../components/Pages/ManageVistors/Listing/Listing";
+import AllCardsListing from "../components/Pages/ManageVistors/Listing/Listing";
 import ViewEmployee from "../components/Pages/Employee/View/View";
 import EditEmployee from "../components/Pages/Employee/Create/Edit";
 import LogsListing from "../components/Pages/ManageDevice/ViewLogs/Listing/LogsListing";
-import ViewVisitor from "../components/Pages/ManageVistors/View/View";
+import ViewCardInfomration from "../components/Pages/ManageVistors/View/View";
 import EditDeviceInformation from "../components/Pages/ManageDevice/Edit/Edit";
-import CreateVisitor from "../components/Pages/ManageVistors/Create/Create";
-import EditVisitor from "../components/Pages/ManageVistors/Create/Edit";
 import VisitorUploadPage from "../components/Pages/VisitorUpload";
 
 
@@ -470,29 +468,34 @@ export const Layout = () => (
                     }
                 />
 
+                {/* Cards Module routes*/}
+
+                <Route
+                    path="/admin/cards"
+                    element={
+                        <PrivateRoute module="cards">
+                            <AllCardsListing />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/admin/cards/view/:id"
+                    element={
+                        <PrivateRoute module="cards">
+                            <ViewCardInfomration />
+                        </PrivateRoute>
+                    }
+                />
+
+                {/* Cards Module routes*/}
+
+
                 <Route
                     path="/admin/manage-visitors"
                     element={
                         <PrivateRoute module="cards">
-                            <ManageVisitorsListing />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-visitors/create"
-                    element={
-                        <PrivateRoute module="cards">
-                            <CreateVisitor />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-visitors/edit/:id"
-                    element={
-                        <PrivateRoute module="cards">
-                            <EditVisitor />
+                            <AllCardsListing />
                         </PrivateRoute>
                     }
                 />
@@ -501,7 +504,7 @@ export const Layout = () => (
                     path="/admin/manage-visitors/view-visitor/:id"
                     element={
                         <PrivateRoute module="cards">
-                            <ViewVisitor />
+                            <ViewCardInfomration />
                         </PrivateRoute>
                     }
                 />
