@@ -145,27 +145,25 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                             }}
                             className={classes.tr}
                         >
-                            <TableCell align="center">{item.emp_id ?? '-'}</TableCell>
-                            {/* <TableCell align="center">
+                            <TableCell align="center">{item.id ?? '-'}</TableCell>
+                            <TableCell align="center">
                                 <div>
                                     <Avatar className="w-[44px] h-[44px]" alt="employee_image" src={item.image} />
                                 </div>
 
-                            </TableCell> */}
-
-
+                            </TableCell>
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.first_name}
+                                {item.firstName}
                             </TableCell>
 
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.last_name}
+                                {item.lastName}
                             </TableCell>
 
                             <TableCell
@@ -195,14 +193,15 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                <div className="flex items-center gap-2">
-                                    {
-                                        item.group
-                                    }
-                                </div>
+                                 {item.department || "NA"}
                             </TableCell>
 
-
+                            <TableCell
+                                align="center"
+                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
+                            >
+                                 {item.location || "NA"}
+                            </TableCell>
 
                             <TableCell
                                 align="center"

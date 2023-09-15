@@ -43,7 +43,7 @@ export const DateFiter: React.FC<Props> = ({ onDateRangeSelect, id,defaultValue,
     }
   }
   return (
-    <div className='flex w-full flex-col sm:flex-row justify-end date_range_filter gap-3'>
+    <div className='flex w-full date_range_filter gap-3'>
       <div className='sm:custom-select-input sm:w-44'>
         <SelectInput
           bgcolor='white'

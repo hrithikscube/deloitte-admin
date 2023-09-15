@@ -7,6 +7,8 @@ import { SelectInput } from "../../../Common/Input/Select";
 
 import filterIcon from "../../../../assets/icons/ListingIcons/filterIcon.svg";
 import add_user from "../../../../assets/icons/ListingIcons/add_user.svg";
+import resetIconActive from "../../../../assets/icons/resetIconActive.svg";
+import resetIcon from "../../../../assets/icons/resetIcon.svg";
 import refresh from "../../../../assets/icons/ListingIcons/refresh.svg";
 import disabledRefresh from "../../../../assets/icons/ListingIcons/disabledRefresh.svg";
 import Badge from "@mui/material/Badge";
@@ -30,14 +32,29 @@ const initialStates = {
     designation: "",
 };
 
+const dummyData = [
+    {
+        id: 1,
+        image: '',
+        firstName: 'Anil',
+        lastName: 'Verma',
+        phone: 9876543212,
+        email: 'anil@scube.com',
+        designation: 'Developer',
+        department: 'IT',
+        location: 'Bangalore',
+        is_active: true,
+    }
+]
+
 const UserListing = () => {
     const cols = [
         {
             title: "Employee ID",
         },
-        // {
-        //     title: "Image",
-        // },
+        {
+            title: "Image",
+        },
         {
             title: "First Name",
         },
@@ -56,10 +73,13 @@ const UserListing = () => {
         },
 
         {
-            title: "Group",
+            title: "Team/Department",
         },
         {
-            title: "Enable/ Disable",
+            title: "Location",
+        },
+        {
+            title: "Profile Status",
         },
         {
             title: "Action",
@@ -224,7 +244,7 @@ const UserListing = () => {
         <div className=" mb-44 sm:mb-0">
             <div className="flex flex-col justify-between  sm:flex-row">
                 <div>
-                    <p className="text-SpaceCadet font-nunitoBold">
+                    <p className="text-SpaceCadet font-nunitoBold text-[22px]">
                         List of Employees
                     </p>
                     <hr className="w-32 md:w-full line" />
@@ -278,23 +298,13 @@ const UserListing = () => {
             {filterOpen ? (
                 <>
                     <div className="flex flex-col items-center gap-3 mt-4 sm:flex-row filters ">
-                        <div className="w-full lg:w-[300px]">
-                            <DateRangePicker
-                                label="Joined Date"
-                                startDate={startDate}
-                                endDate={endDate}
-                                onChange={handleDateRangeFilter}
-                                istodaymax={true}
-                            />
-                        </div>
-
-                        <div className="w-full  sm:w-[600px]">
+                        <div className="w-full sm:w-[600px]">
                             <SelectInput
                                 width="100%"
-                                options={filterList.designations}
+                                options={filterList.designations || []}
                                 handleChange={onFilterChange}
                                 value={params.designation}
-                                label="Designation"
+                                label="Profile Status"
                                 name="designation"
                                 bgcolor="white"
                             />
@@ -302,11 +312,33 @@ const UserListing = () => {
                         <div className="w-full  sm:w-[600px]">
                             <SelectInput
                                 width="100%"
-                                options={statusData}
+                                options={filterList.designations || []}
                                 handleChange={onFilterChange}
-                                value={params.status}
-                                label="Active/Inactive"
-                                name="status"
+                                value={params.designation}
+                                label="Location"
+                                name="designation"
+                                bgcolor="white"
+                            />
+                        </div>
+                        <div className="w-full  sm:w-[600px]">
+                            <SelectInput
+                                width="100%"
+                                options={filterList.designations || []}
+                                handleChange={onFilterChange}
+                                value={params.designation}
+                                label="Department"
+                                name="designation"
+                                bgcolor="white"
+                            />
+                        </div>
+                        <div className="w-full  sm:w-[600px]">
+                            <SelectInput
+                                width="100%"
+                                options={filterList.designations || []}
+                                handleChange={onFilterChange}
+                                value={params.designation}
+                                label="Designation"
+                                name="designation"
                                 bgcolor="white"
                             />
                         </div>
@@ -334,18 +366,18 @@ const UserListing = () => {
                                 Apply Filter
                             </CustomButton>
 
-                            <CustomButton
-                                borderRadius="8px"
-                                onClick={resetFilter}
-                                width="w-fit"
-                                variant="secondary"
-                                size="large"
-                            >
+                            <span>
+                                {CountItems(params) === 0 ? (
+                                <img className="w-10" src={resetIcon} alt="" />
+                                ) : (
                                 <img
-                                    src={refresh}
-                                    alt="reset_btn"
+                                    onClick={resetFilter}
+                                    className="cursor-pointer w-10"
+                                    src={resetIconActive}
+                                    alt=""
                                 />
-                            </CustomButton>
+                                )}
+                            </span>
                         </div>
                     </div>
                 </>
@@ -373,12 +405,12 @@ const UserListing = () => {
                     <CircularProgress />
                     <span className="text-3xl">Loading...</span>
                 </div>
-            ) : list.length ? (
+            ) : dummyData.length ? (
                 <div>
                     <div className="w-full   rounded-lg mt-[16px]">
                         <CardsTable
                             cols={cols}
-                            data={list}
+                            data={dummyData}
                             handleToggleChange={handleToggleChange}
                             onRowDeleteClick={onRowDeleteClick}
                         />
