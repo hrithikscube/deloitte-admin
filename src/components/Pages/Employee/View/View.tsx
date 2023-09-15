@@ -18,9 +18,11 @@ const ViewEmployee = () => {
 
     const TabConstants = [
         {
-            title: 'Activity Logs',
+            title: 'Data Logs',
         },
-
+        {
+            title: 'Manage Cards',
+        },
     ]
 
 
@@ -75,13 +77,17 @@ const ViewEmployee = () => {
             value: dataById.designation ?? '-'
         },
         {
-            name: 'Group',
+            name: 'Team/Department',
             value: dataById?.group ?? '-'
         },
-        // {
-        //     name: 'Card No',
-        //     value: dataById?.card_no ?? '-'
-        // },
+        {
+            name: 'Location',
+            value: dataById?.card_no ?? '-'
+        },
+        {
+            name: 'Profile Status',
+            value: dataById?.card_no ?? '-'
+        },
     ]
 
     return (

@@ -45,9 +45,9 @@ const ActivityLogsTable = ({ id, isLoading, dataList }: any) => {
 
 
   const headings = [
-    'Image',
-    'Entry Type',
-    'Time'
+    'Activity',
+    'Log Details',
+    'Date & Time'
   ]
 
   return (
@@ -104,16 +104,21 @@ const ActivityLogsTable = ({ id, isLoading, dataList }: any) => {
                     align="center"
                     sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                   >
-                    <div className='flex justify-center items-center'>
-                      <img className="w-[50px] h-[50px] object-cover" src={'data:image/png;base64,' + item.image} alt={'avatar'} />
-                    </div>
+                    {item.activity ?? '-'}
                   </TableCell>
 
                   <TableCell
                     align="center"
                     sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                   >
-                    {item.entry_type ?? '-'}
+                    <div className=''>
+                      <p>Location Changed</p>
+                      <p>Change Description</p>
+                      <div>
+                        <p>from - Bangalore</p>
+                        <p>to - Mumbai</p>
+                      </div>
+                    </div>
                   </TableCell>
 
                   <TableCell
