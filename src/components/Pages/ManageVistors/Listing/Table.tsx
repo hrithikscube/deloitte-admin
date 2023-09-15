@@ -6,7 +6,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { makeStyles } from "@mui/styles";
-
+import { Button, ListItemIcon, ListItemText } from "@mui/material";
+import RestartAltOutlinedIcon from "@mui/icons-material/RestartAltOutlined";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { encryptData } from "../../../../utils/encryption";
 import Status from "../../../Common/Status";
@@ -28,6 +30,10 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import React from "react";
 
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
+import PauseCircleOutlineOutlinedIcon from "@mui/icons-material/PauseCircleOutlineOutlined";
+
+
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
         children: React.ReactElement<any, any>;
@@ -37,193 +43,6 @@ const Transition = React.forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const ScheduleIcon = ({ onClick }: any) => {
-    return (
-        <IconButton>
-            <Tooltip title="Schedule">
-                <div
-                    onClick={onClick}
-                    className="cursor-pointer w-[24px] h-[24px] object-contain"
-                >
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M3.0918 9.40445H20.9157"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M16.4429 13.3097H16.4522"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M12.0054 13.3097H12.0147"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M7.55818 13.3097H7.56744"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M16.4429 17.1964H16.4522"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M12.0054 17.1964H12.0147"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M7.55818 17.1964H7.56744"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M16.0433 2V5.29078"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M7.96515 2V5.29078"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M16.2383 3.5791H7.77096C4.83427 3.5791 3 5.21504 3 8.22213V17.2718C3 20.3261 4.83427 21.9999 7.77096 21.9999H16.229C19.175 21.9999 21 20.3545 21 17.3474V8.22213C21.0092 5.21504 19.1842 3.5791 16.2383 3.5791Z"
-                            stroke="#FF8059"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </div>
-            </Tooltip>
-        </IconButton>
-    );
-};
-
-const RescheduleIcon = ({ onClick }: any) => {
-    return (
-        <IconButton>
-            <Tooltip title="Reschedule">
-                <div
-                    onClick={onClick}
-                    className="cursor-pointer w-[24px] h-[24px] object-contain"
-                >
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M3.0918 9.40445H20.9157"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M16.4429 13.3097H16.4522"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M12.0054 13.3097H12.0147"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M7.55818 13.3097H7.56744"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M16.4429 17.1964H16.4522"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M12.0054 17.1964H12.0147"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M7.55818 17.1964H7.56744"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M16.0433 2V5.29078"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M7.96515 2V5.29078"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M16.2383 3.5791H7.77096C4.83427 3.5791 3 5.21504 3 8.22213V17.2718C3 20.3261 4.83427 21.9999 7.77096 21.9999H16.229C19.175 21.9999 21 20.3545 21 17.3474V8.22213C21.0092 5.21504 19.1842 3.5791 16.2383 3.5791Z"
-                            stroke="#ffbf00"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </div>
-            </Tooltip>
-        </IconButton>
-    );
-};
 
 const Separator = () => {
     return (
@@ -248,120 +67,23 @@ const Separator = () => {
     );
 };
 
-const ViewIcon = ({ onClick }: any) => {
+const Actions = ({ onClick }: any) => {
     return (
-        <Tooltip title="View Visitor">
-            <IconButton onClick={onClick} className="cursor-pointer">
-                <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M15.1609 12.0536C15.1609 13.7996 13.7449 15.2146 11.9989 15.2146C10.2529 15.2146 8.83789 13.7996 8.83789 12.0536C8.83789 10.3066 10.2529 8.8916 11.9989 8.8916C13.7449 8.8916 15.1609 10.3066 15.1609 12.0536Z"
-                        stroke="#40C79E"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M11.998 19.355C15.806 19.355 19.289 16.617 21.25 12.053C19.289 7.48898 15.806 4.75098 11.998 4.75098H12.002C8.194 4.75098 4.711 7.48898 2.75 12.053C4.711 16.617 8.194 19.355 12.002 19.355H11.998Z"
-                        stroke="#40C79E"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                </svg>
-            </IconButton>
-        </Tooltip>
+        // <Tooltip title="View Card">
+            <div className="bg-white rounded">
+                <IconButton onClick={onClick} className="cursor-pointer">
+                    <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 0C8.60444 0 8.21776 0.117298 7.88886 0.337061C7.55996 0.556824 7.30362 0.869181 7.15224 1.23463C7.00087 1.60009 6.96126 2.00222 7.03843 2.39018C7.1156 2.77814 7.30608 3.13451 7.58579 3.41421C7.86549 3.69392 8.22186 3.8844 8.60982 3.96157C8.99778 4.03874 9.39992 3.99913 9.76537 3.84776C10.1308 3.69638 10.4432 3.44004 10.6629 3.11114C10.8827 2.78224 11 2.39556 11 2C11 1.46957 10.7893 0.96086 10.4142 0.585787C10.0391 0.210714 9.53043 0 9 0ZM2 0C1.60444 0 1.21776 0.117298 0.88886 0.337061C0.559962 0.556824 0.303617 0.869181 0.152242 1.23463C0.000866562 1.60009 -0.0387401 2.00222 0.0384303 2.39018C0.115601 2.77814 0.306082 3.13451 0.585787 3.41421C0.865492 3.69392 1.22186 3.8844 1.60982 3.96157C1.99778 4.03874 2.39992 3.99913 2.76537 3.84776C3.13082 3.69638 3.44318 3.44004 3.66294 3.11114C3.8827 2.78224 4 2.39556 4 2C4 1.46957 3.78929 0.96086 3.41421 0.585787C3.03914 0.210714 2.53043 0 2 0ZM16 0C15.6044 0 15.2178 0.117298 14.8889 0.337061C14.56 0.556824 14.3036 0.869181 14.1522 1.23463C14.0009 1.60009 13.9613 2.00222 14.0384 2.39018C14.1156 2.77814 14.3061 3.13451 14.5858 3.41421C14.8655 3.69392 15.2219 3.8844 15.6098 3.96157C15.9978 4.03874 16.3999 3.99913 16.7654 3.84776C17.1308 3.69638 17.4432 3.44004 17.6629 3.11114C17.8827 2.78224 18 2.39556 18 2C18 1.46957 17.7893 0.96086 17.4142 0.585787C17.0391 0.210714 16.5304 0 16 0Z" fill="#27282D" fill-opacity="0.7" />
+                    </svg>
+                </IconButton>
+            </div>
+        // </Tooltip>
     );
 };
 
-const EditIconSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            d="M11.492 2.78906H7.753C4.678 2.78906 2.75 4.96606 2.75 8.04806V16.3621C2.75 19.4441 4.669 21.6211 7.753 21.6211H16.577C19.662 21.6211 21.581 19.4441 21.581 16.3621V12.3341"
-            stroke="#FF8059"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        />
-        <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M8.82666 10.9205L16.2997 3.4475C17.2307 2.5175 18.7397 2.5175 19.6707 3.4475L20.8877 4.6645C21.8187 5.5955 21.8187 7.1055 20.8877 8.0355L13.3787 15.5445C12.9717 15.9515 12.4197 16.1805 11.8437 16.1805H8.09766L8.19166 12.4005C8.20566 11.8445 8.43266 11.3145 8.82666 10.9205Z"
-            stroke="#FF8059"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        />
-        <path
-            d="M15.1641 4.60156L19.7301 9.16756"
-            stroke="#FF8059"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        />
-    </svg>
-);
-
-const CancelInvitation = ({ onClick }: any) => {
-    return (
-        <Tooltip title="Cancel Invitation">
-            <IconButton onClick={onClick} className="cursor-pointer">
-                <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M14.3955 9.59473L9.60352 14.3867"
-                        stroke="#F14D4D"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        d="M14.3956 14.3898L9.59961 9.59277"
-                        stroke="#F14D4D"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M16.334 2.75H7.665C4.644 2.75 2.75 4.889 2.75 7.916V16.084C2.75 19.111 4.635 21.25 7.665 21.25H16.333C19.364 21.25 21.25 19.111 21.25 16.084V7.916C21.25 4.889 19.364 2.75 16.334 2.75Z"
-                        stroke="#F14D4D"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                </svg>
-            </IconButton>
-        </Tooltip>
-    );
-};
 interface BasicTableProps {
     cols: any;
     data: any;
-    editSrModalOpen: any;
-    onRowDeleteClick: any;
-    handleToggleChange: any;
 }
 
 const width = window.innerWidth;
@@ -385,36 +107,27 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const VisitorTable = ({
+const CardsTable = ({
     cols,
     data,
-    onRowDeleteClick,
-    editSrModalOpen,
 }: BasicTableProps) => {
     const navigate = useNavigate();
     const classes = useStyles();
     const [openElem, setOpenElem] = useState(null);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [open, setOpen] = useState(false);
 
     const [shareParams, setShareParams] = useState({
         qr_image: "",
     });
-    const handleClick = (elem: any) => (event: any) => {
-        setAnchorEl(event.currentTarget);
-        setOpenElem(elem);
-    };
 
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
     const handleClose = () => {
         setAnchorEl(null);
-        setOpenElem(null);
-        setOpen(false);
     };
 
-    const onRowDelete = (item: any) => {
-        onRowDeleteClick(item);
-        handleClose();
-    };
 
     return (
         <TableContainer
@@ -470,71 +183,55 @@ const VisitorTable = ({
                             className={classes.tr}
                         >
                             <TableCell align="center">
-                                {/* <img
-                                    width={50}
-                                    className="m-auto"
-                                    src={item.image}
-                                /> */}
-                                <Avatar src={item.image} />
+                                <p>{index + 1}</p>
                             </TableCell>
 
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.name}
+                                <p>dummy_value</p>
                             </TableCell>
 
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                <p> {item.phone}</p>
-                                <p> {item.email}</p>
+                                <p>dummy_value</p>
                             </TableCell>
 
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.purpose || "N/A"}
+                                <p>dummy_value</p>
+
                             </TableCell>
 
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.come_from || "N/A"}
+                                <p>dummy_value</p>
+
                             </TableCell>
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
                                 <div className="flex flex-col justify-center items-center text-center">
-                                    <p> {item?.interviewee_name ?? "-"}</p>
+                                    <p>dummy_value</p>
+
                                 </div>
                             </TableCell>
 
-                            {/* <TableCell
-                                align="center"
-                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
-                            >
-                                {item?.location ?? '-'}
-                            </TableCell> */}
 
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.is_cancelled !== 1 ? (
-                                    <div className="flex justify-center items-center">
-                                        {item.status == 1
-                                            ? "Permanently effective"
-                                            : "Effective within the validity period"}
-                                    </div>
-                                ) : (
-                                    "Cancelled"
-                                )}
+                                <p>dummy_value</p>
+
                             </TableCell>
 
                             <TableCell
@@ -542,79 +239,37 @@ const VisitorTable = ({
                                 sx={{ padding: "0px", fontSize: "0.8rem" }}
                             >
                                 <div className="flex justify-center items-center">
-                                    {/* view visitor information */}
-
-                                    <ViewIcon
-                                        onClick={() =>
-                                            navigate(
-                                                `/admin/manage-visitors/view-visitor/${item.id}`
-                                            )
-                                        }
-                                    />
-
-                                    {item.is_cancelled !== 1 && (
-                                        <>
-                                            <Separator />
-                                            <div
-                                                // onClick={() => editAvModalOpen(item.id)}
-                                                onClick={() =>
-                                                    navigate(
-                                                        `/admin/manage-visitors/edit/${item.id}`
-                                                    )
-                                                }
-                                                className="flex justify-center"
-                                            >
-                                                <Tooltip title="Edit Visitor">
-                                                    <IconButton>
-                                                        <EditIconSvg />
-                                                    </IconButton>
-                                                </Tooltip>
-                                            </div>
-                                        </>
-                                    )}
-
-                                    {/* schedule or reschedule */}
-                                    {/* {
-                                        false ?
-                                            <ScheduleIcon onClick={editSrModalOpen} /> :
-                                            <RescheduleIcon onClick={editSrModalOpen} />
-                                    } */}
-
-                                    {/* delete visitor */}
-                                    {item?.is_cancelled !== 1 && (
-                                        <>
-                                            <Separator />
-                                            <div key={index}>
-                                                <Tooltip title="cancel invitation">
-                                                    <CancelInvitation
-                                                        onClick={() =>
-                                                            onRowDelete(item)
-                                                        }
-                                                    />
-                                                </Tooltip>
-                                            </div>
-                                        </>
-                                    )}
+                                    <button
+                                        id="basic-button"
+                                        aria-controls={open ? 'basic-menu' : undefined}
+                                        aria-haspopup="true"
+                                        aria-expanded={open ? 'true' : undefined}
+                                        onClick={handleClick}
+                                    >
+                                        <Actions />
+                                    </button>
+                                    <Menu
+                                        id="basic-menu"
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        onClose={handleClose}
+                                        MenuListProps={{
+                                            'aria-labelledby': 'basic-button',
+                                        }}
+                                    >
+                                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                        <MenuItem onClick={handleClose}>My account</MenuItem>
+                                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                    </Menu>
                                 </div>
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
-            <Dialog
-                open={open}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={handleClose}
-                aria-describedby="alert-dialog-slide-description"
-            >
-                <DialogTitle>{"Scan the QR"}</DialogTitle>
-                <DialogContent>
-                    <img src={shareParams.qr_image} />
-                </DialogContent>
-            </Dialog>
+            
         </TableContainer>
     );
 };
 
-export default VisitorTable;
+export default CardsTable;

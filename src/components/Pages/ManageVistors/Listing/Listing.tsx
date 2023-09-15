@@ -10,7 +10,7 @@ import add_user from "../../../../assets/icons/ListingIcons/add_user.svg";
 import filterIcon from "../../../../assets/icons/ListingIcons/filterIcon.svg";
 
 import moment from "moment";
-import VisitorTable from "./Table";
+import CardsTable from "./Table";
 import Badge from "@mui/material/Badge";
 import AddVisitor from "../Modal/AddVisitor";
 import ScheduleModal from "../Modal/ScheduleModal";
@@ -32,34 +32,31 @@ const initialStates = {
     designation: "",
 };
 
-const ManageVisitorsListing = () => {
+const AllCardsListing = () => {
     const cols = [
         {
-            title: "Photo",
+            title: "UID",
         },
         {
-            title: "Name",
+            title: "Location",
         },
         {
-            title: "Phone",
+            title: "Department & Designation",
         },
         {
-            title: "Purpose",
+            title: "Name Email",
         },
         {
-            title: "Come From",
+            title: "Date of Request",
         },
         {
-            title: "Receiving Employee",
-        },
-        // {
-        //     title: "Location",
-        // },
-        {
-            title: "Status",
+            title: "Card Type",
         },
         {
-            title: "Action",
+            title: "Card Status",
+        },
+        {
+            title: "ACTION",
         },
     ];
     const dispatch = useDispatch<any>();
@@ -68,7 +65,6 @@ const ManageVisitorsListing = () => {
     const [openDelete, setOpenDelete] = useState(false);
     const [selectedEmployee, setSelectedEmployee] = useState("");
     const [isModifiedFilter, setIsModifiedFilter] = useState(false);
-
     const [filtersCount, setFiltersCount] = useState(0);
     const [startDate, setStartDate] = useState();
     const [filterList, setFilterList] = useState({} as any);
@@ -107,19 +103,19 @@ const ManageVisitorsListing = () => {
         setCurrentPage(1);
         setParams({ ...params, ...initialStates });
         setFiltersCount(0);
-        dispatch(fetchVisitors(initialStates, 1));
+        // dispatch(fetchVisitors(initialStates, 1));
         setStartDate("" as any);
         setEndDate("" as any);
         setIsModifiedFilter(false);
     };
 
     const ToggleFilter = () => {
-        filterOpen ? setFilterOpen(false) : setFilterOpen(true);
+        setFilterOpen(!filterOpen)
     };
 
     const ApplyFilter = () => {
         setCurrentPage(1);
-        dispatch(fetchVisitors(params, 1));
+        // dispatch(fetchVisitors(params, 1));
         let p = JSON.parse(JSON.stringify(params));
         delete p.start_date;
         const filtercount = CountItems(p);
@@ -131,117 +127,10 @@ const ManageVisitorsListing = () => {
         setIsModifiedFilter(true);
     };
 
-    useEffect(() => {
-        fetchPrerequest();
-    }, []);
+    // useMemo(() => {
+    //     dispatch(fetchVisitors(params, currentPage));
+    // }, [currentPage]);
 
-    useMemo(() => {
-        dispatch(fetchVisitors(params, currentPage));
-    }, [currentPage]);
-
-    const fetchPrerequest = () => {
-        axiosInstance
-            .get(`/admin/employees/prequestie`)
-            .then((response) => {
-                const data = response.data.data;
-                console.log(data);
-                setFilterList({
-                    designations: data.designations.map(
-                        (x: any) => x.designation
-                    ),
-                });
-            })
-            .catch((error) => {
-                const { errors, message } = error.response.data;
-                const errorMsg = errors[Object.keys(errors)[0]] || message;
-                showToastMessage(errorMsg, "error");
-            });
-    };
-
-    const handleToggleChange = (event: any, user: any) => {
-        event.preventDefault();
-        axiosInstance
-            .patch(`/admin/employees/update-status/${user.id}`, {
-                status: !user.is_active,
-            })
-            .then((response) => {
-                showToastMessage(response.data.data.message, "success");
-                dispatch(fetchVisitors(params, currentPage));
-            })
-            .catch((error) => {
-                const { errors, message } = error.response.data;
-                const errorMsg = errors[Object.keys(errors)[0]] || message;
-                showToastMessage(errorMsg, "error");
-            });
-    };
-
-    const onRowDeleteClick = (item: any) => {
-        setSelectedEmployee(item.id);
-        cancelModalOpen(item.id);
-        // setOpenDelete(true)
-    };
-
-    // to clear previous selected employee
-    const cleanUp = () => {
-        setSelectedEmployee("");
-    };
-    // Add or Edit Visitor modal states
-    const [avModal, setAvModal] = useState(false);
-
-    const [activeData, setActiveData] = useState({
-        id: "",
-        edit: false,
-    });
-
-    const avModalOpen = () => {
-        setActiveData({
-            ...activeData,
-            id: "",
-            edit: false,
-        });
-        setAvModal(true);
-    };
-
-    const editAvModalOpen = (id: any) => {
-        setActiveData({
-            ...activeData,
-            id: id,
-            edit: true,
-        });
-        setAvModal(true);
-    };
-
-    const avModalClose = () => {
-        setAvModal(false);
-    };
-
-    // Schedule or Reschedule modal states
-    const [srModal, setSRModal] = useState(false);
-
-    const srModalOpen = () => {
-        setSRModal(true);
-    };
-
-    const editSrModalOpen = () => {
-        setSRModal(true);
-    };
-
-    const srModalClose = () => {
-        setSRModal(false);
-    };
-
-    // Cancel Invitation modal states
-    const [cancelModal, setCancelModal] = useState(false);
-    const [cancelId, setCancelId] = useState();
-
-    const cancelModalOpen = (thisId: any) => {
-        setCancelId(thisId);
-        setCancelModal(true);
-    };
-
-    const cancelModalClose = () => {
-        setCancelModal(false);
-    };
 
     return (
         <React.Fragment>
@@ -249,12 +138,12 @@ const ManageVisitorsListing = () => {
                 <div className="flex flex-col justify-between  sm:flex-row">
                     <div>
                         <p className="text-SpaceCadet font-nunitoBold">
-                            List of Visitors
+                            All Cards
                         </p>
                         <hr className="w-32 md:w-full line" />
                         <p className="mt-1 text-xs font-normal font-nunitoRegular text-SpaceCadet">
                             {metadata?.totalUsers}{" "}
-                            {metadata?.totalUsers > 1 ? "Visitors" : "Visitors"}
+                            {metadata?.totalUsers > 1 ? "Cards" : "Cards"}
                         </p>
                     </div>
                     <br />
@@ -283,20 +172,6 @@ const ManageVisitorsListing = () => {
                             </p>
                         </CustomButton>
 
-                        <Link to="/admin/manage-visitors/create">
-                            <CustomButton
-                                disabled={false}
-                                borderRadius="0.5rem"
-                                variant="contained"
-                                size="large"
-                                icon={<img src={add_user} alt="addImageIcon" />}
-                                // onClick={avModalOpen}
-                            >
-                                <p className="text-sm font-bold text-darkbg font-nunitoRegular">
-                                    Add Visitor
-                                </p>
-                            </CustomButton>
-                        </Link>
                     </div>
                 </div>
                 {filterOpen ? (
@@ -372,7 +247,6 @@ const ManageVisitorsListing = () => {
                     </>
                 ) : null}
 
-                {/* {!isLoading && list.length ? ( */}
                 {!isLoading && list.length ? (
                     <p className="mt-2 text-Kimberly text-xs font-nunitoRegular font-normal">
                         Showing{" "}
@@ -397,16 +271,12 @@ const ManageVisitorsListing = () => {
                         <CircularProgress />
                         <span className="text-3xl">Loading...</span>
                     </div>
-                ) : list.length ? (
+                ) : [1, 1, 1, 1, 2, 3].length ? (
                     <div>
                         <div className="w-full   rounded-lg mt-[16px]">
-                            <VisitorTable
+                            <CardsTable
                                 cols={cols}
-                                data={list}
-                                // editAvModalOpen={editAvModalOpen}
-                                editSrModalOpen={editSrModalOpen}
-                                onRowDeleteClick={onRowDeleteClick}
-                                handleToggleChange={handleToggleChange}
+                                data={[11, 1, 2, 23, 4, 5]}
                             />
                         </div>
 
@@ -421,14 +291,6 @@ const ManageVisitorsListing = () => {
                                 }}
                             />
                         </div>
-                        {/* 1. Warning Popup */}
-                        {/* <ConfirmDelete
-                            handleConfirm={onDeleteConfirm}
-                            handleDialogClose={onDeleteCancel}
-                            open={openDelete}
-                            title={`Are you sure of deleting this employee record?`}
-                            isLoading={false}
-                        /> */}
                     </div>
                 ) : (
                     <div className="flex flex-col items-center justify-center gap-4 mt-6">
@@ -439,26 +301,8 @@ const ManageVisitorsListing = () => {
                 )}
             </div>
 
-            {/* Add or Edit Visitor Information Modal */}
-            <AddVisitor
-                open={avModal}
-                isEdit={activeData.edit}
-                handleClose={avModalClose}
-                id={activeData.id !== "" ? activeData.id : ""}
-            />
-
-            {/* Schedule or Reschedule invitation */}
-            <ScheduleModal open={srModal} handleClose={srModalClose} />
-
-            {/* Cancel invitation modal*/}
-            <InvitationCancelModal
-                id={cancelId}
-                open={cancelModal}
-                handleClose={cancelModalClose}
-                cleanUp={cleanUp}
-            />
         </React.Fragment>
     );
 };
 
-export default ManageVisitorsListing;
+export default AllCardsListing;
