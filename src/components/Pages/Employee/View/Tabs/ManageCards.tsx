@@ -14,6 +14,9 @@ import LostOrDamagedPopup from "./LostOrDamagedPopup";
 import ChangeInfoPopup from "./ChangeInfoPopup";
 import SelectTemplatePopup from "./SelectTemplatePopup";
 import NewCardPlacedPopup from "./NewCardPlacedPopup";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -55,7 +58,7 @@ const dataList = [
 
 const ManageCards = () => {
     const classes = useStyles();
-    const [options, setOptions] = useState(false);
+    // const [options, setOptions] = useState(false as boolean);
     const [openPopup, setOpenPopup] = useState({
         lost: false,
         damaged: false,
@@ -63,13 +66,15 @@ const ManageCards = () => {
         selectTemplate: false,
         newCardPlaced: false,
     });
-    const impactRef: any = useRef();
-    useOutsideClick(impactRef, () => setOptions(false));
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const options = Boolean(anchorEl);
 
-    const dropdownOptions = () => {
-        setOptions(!options);
+    const dropdownOptions = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
     };
-
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     const openPopupFun = (type: any) => {
         setOpenPopup({ ...openPopup, [type]: true });
     };
@@ -169,8 +174,10 @@ const ManageCards = () => {
                                                 >
                                                     <div className="">
                                                         <div
-                                                            onClick={
-                                                                dropdownOptions
+                                                            onClick={(e: any) =>
+                                                                dropdownOptions(
+                                                                    e
+                                                                )
                                                             }
                                                             className={`cursor-pointer w-[200px] border-2 border-gray-500 p-2 flex justify-center items-center gap-2 rounded-lg`}
                                                         >
@@ -187,56 +194,89 @@ const ManageCards = () => {
                                                                 alt=""
                                                             />
                                                         </div>
-                                                        {options && (
-                                                            <div
-                                                                ref={impactRef}
-                                                                className="bg-white w-[180px] shadow-md flex flex-col justify-start items-start absolute top-[40px] left-0 z-100 rounded"
+                                                        <Menu
+                                                            elevation={1}
+                                                            id="basic-menu"
+                                                            anchorEl={anchorEl}
+                                                            open={options}
+                                                            onClose={
+                                                                handleClose
+                                                            }
+                                                            MenuListProps={{
+                                                                "aria-labelledby":
+                                                                    "basic-button",
+                                                            }}
+                                                        >
+                                                            <MenuItem
+                                                                sx={{
+                                                                    fontSize:
+                                                                        "14px",
+                                                                    fontFamily:
+                                                                        "Nunito Bold",
+                                                                    marginTop:
+                                                                        "2px",
+                                                                }}
+                                                                onClick={() =>
+                                                                    openPopupFun(
+                                                                        "lost"
+                                                                    )
+                                                                }
                                                             >
-                                                                <p
-                                                                    className="cursor-pointer border-b w-full p-2"
-                                                                    onClick={() =>
-                                                                        openPopupFun(
-                                                                            "lost"
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    Mark as Lost
-                                                                </p>
-                                                                <p
-                                                                    className="cursor-pointer border-b w-full p-2"
-                                                                    onClick={() =>
-                                                                        openPopupFun(
-                                                                            "damaged"
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    Mark as
-                                                                    Damaged
-                                                                </p>
-                                                                <p
-                                                                    className="cursor-pointer border-b w-full p-2"
-                                                                    onClick={() =>
-                                                                        openPopupFun(
-                                                                            "changeInfo"
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    Change in
-                                                                    Information
-                                                                </p>
-                                                                <p
-                                                                    className="cursor-pointer p-2"
-                                                                    onClick={() =>
-                                                                        openPopupFun(
-                                                                            "selectTemplate"
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    Change in
-                                                                    Design
-                                                                </p>
-                                                            </div>
-                                                        )}
+                                                                Mark as Lost
+                                                            </MenuItem>
+                                                            <MenuItem
+                                                                sx={{
+                                                                    fontSize:
+                                                                        "14px",
+                                                                    fontFamily:
+                                                                        "Nunito Bold",
+                                                                    marginTop:
+                                                                        "2px",
+                                                                }}
+                                                                onClick={() =>
+                                                                    openPopupFun(
+                                                                        "damaged"
+                                                                    )
+                                                                }
+                                                            >
+                                                                Mark as Damaged
+                                                            </MenuItem>
+                                                            <MenuItem
+                                                                sx={{
+                                                                    fontSize:
+                                                                        "14px",
+                                                                    fontFamily:
+                                                                        "Nunito Bold",
+                                                                    marginTop:
+                                                                        "2px",
+                                                                }}
+                                                                onClick={() =>
+                                                                    openPopupFun(
+                                                                        "changeInfo"
+                                                                    )
+                                                                }
+                                                            >
+                                                                Change in
+                                                                Information
+                                                            </MenuItem>
+                                                            <MenuItem
+                                                                sx={{
+                                                                    fontSize:
+                                                                        "14px",
+                                                                    fontFamily:
+                                                                        "Nunito Bold",
+                                                                    marginTop:
+                                                                        "2px",
+                                                                }}
+                                                                onClick={() =>
+                                                                    openPopupFun(
+                                                                        "selectTemplate"
+                                                                    )
+                                                                }
+                                                            >
+                                                                Change in Design
+                                                            </MenuItem>
+                                                        </Menu>
                                                     </div>
                                                 </TableCell>
                                             </TableRow>
