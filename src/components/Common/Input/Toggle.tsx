@@ -14,13 +14,13 @@ const label = { inputProps: { 'aria-label': 'Switch demo' } };
 const GreenSwitch = styled(Switch)(() => ({
 
   '& .MuiSwitch-switchBase.Mui-disabled': {
-    color: '#C5C9D6',
+    color: '#FF8059',
   },
   '& .MuiSwitch-switchBase.Mui-disabled + .MuiSwitch-track': {
     backgroundColor: '#FFFFFF',
   },
   '& .MuiSwitch-switchBase.Mui-checked': {
-    color: '#F9AF2F',
+    color: '#86BC24',
     '&:hover': {
       backgroundColor: 'rgba(20, 28, 76,0.1)',
     },
@@ -35,7 +35,7 @@ const GreenSwitch = styled(Switch)(() => ({
     backgroundColor: '#141C4C',
   },
   '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-    backgroundColor: '#F9AF2F',
+    backgroundColor: '#86BC24',
   },
 }));
 

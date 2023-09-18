@@ -194,7 +194,7 @@ const Login = () => {
                             <CustomCheckbox
                                 handleCheck={handleCheck}
                                 ischecked={remember_me}
-                                color="text-Comet"
+                                color="text-Green"
                                 name="remember"
                                 Label="Remember me"
                             />

@@ -23,13 +23,13 @@ const useStyles = makeStyles({
     backgroundColor: 'white',
     borderRadius: '8px',
     '& .MuiTabs-indicator': {
-      backgroundColor: '#FF8059',
+      backgroundColor: '#86BC24',
     },
     '& .MuiTabs-flexContainer button': {
       width: window.innerWidth < 768 ? '8rem' : '13rem !important',
     },
     '& .MuiTab-root.Mui-selected': {
-      color: '#FF8059',
+      color: '#86BC24',
       fontFamily: 'Nunito !important',
       fontWeight: '700',
       fontSize: '18px',

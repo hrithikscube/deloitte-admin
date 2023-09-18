@@ -35,22 +35,22 @@ export const useStyles = makeStyles({
         borderRadius: '8px',
       },
       '&:hover .MuiOutlinedInput-input': {
-        color: '#141C4C',
+        color: '#86BC24',
       },
       '&:hover .MuiInputLabel-root': {
         color: '#6A6A78',
       },
       '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#141C4C',
+        borderColor: '#86BC24',
       },
       '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-        color: '#141C4C',
+        color: '#86BC24',
       },
       '& .MuiInputLabel-root.Mui-focused': {
-        color: '#0C8EC7',
+        color: '#86BC24',
       },
       '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#0C8EC7',
+        borderColor: '#86BC24',
       },
     },
   })
@@ -111,7 +111,7 @@ export const SelectInput: React.FC<Props> = ({
                             "&& .MuiMenuItem-root": {
                                 backgroundColor: "#F5FBFD",
                                 border: "1px solid #E7E8ED !important",
-                                color: "#141C4C",
+                                color: "#86BC24",
                                 "&:hover": {
                                     backgroundColor: "#F5FBFD !important",
                                 },
@@ -121,15 +121,15 @@ export const SelectInput: React.FC<Props> = ({
                             },
 
                             "&& .Mui-selected": {
-                                color: "#0C8EC7 !important",
+                                color: "#86BC24 !important",
                                 backgroundColor: "#F5FBFD",
                             },
                         },
                     }}
                     sx={{
-                        color: "#141C4C",
+                        color: "#86BC24",
                         ".MuiSvgIcon-root ": {
-                            fill: "#141C4C !important",
+                            fill: "#86BC24 !important",
                         },
                     }}
                     required={required}

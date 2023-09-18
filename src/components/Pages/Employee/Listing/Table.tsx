@@ -209,7 +209,7 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                             >
                                 <Toggle
                                     name=""
-                                    ischecked={item?.is_active}
+                                    ischecked={true}
                                     handleCheck={(e: any) => {
                                         handleToggleChange(e, item);
                                     }}
