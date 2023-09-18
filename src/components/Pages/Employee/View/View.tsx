@@ -10,6 +10,7 @@ import BreadCrumb from '../../../Common/Breadcrumb/BreadCrumb'
 import CustomButton from '../../../Common/Button'
 import ActivityLogs from './Tabs/ActivtyLogs'
 import axiosInstance from '../../../../utils/axios'
+import ManageCards from './Tabs/ManageCards'
 
 const ViewEmployee = () => {
     let { id } = useParams()
@@ -158,6 +159,7 @@ const ViewEmployee = () => {
                                 cols={TabConstants}
                                 data={[
                                     <ActivityLogs custId={id} />,
+                                    <ManageCards />
                                 ]}
                             />
                         </div>
