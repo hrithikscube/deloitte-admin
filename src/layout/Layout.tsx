@@ -38,13 +38,14 @@ import visitorActive from "../assets/icons/SidebarIcons/visitorActive.svg";
 import MenuOpen from "../assets/images/menu-open.svg";
 import MenuClose from "../assets/images/menu-close.svg";
 import ManageDeviceListing from "../components/Pages/ManageDevice/Listing/Listing";
-import AllCardsListing from "../components/Pages/ManageVistors/Listing/Listing";
+import AllCardsListing from "../components/Pages/Cards/Listing/Listing";
 import ViewEmployee from "../components/Pages/Employee/View/View";
 import EditEmployee from "../components/Pages/Employee/Create/Edit";
 import LogsListing from "../components/Pages/ManageDevice/ViewLogs/Listing/LogsListing";
-import ViewCardInfomration from "../components/Pages/ManageVistors/View/View";
+import ViewCardInfomration from "../components/Pages/Cards/View/View";
 import EditDeviceInformation from "../components/Pages/ManageDevice/Edit/Edit";
 import VisitorUploadPage from "../components/Pages/VisitorUpload";
+import PrintPreview from "../components/Pages/Cards/View/PrintPreview";
 
 
 type Children = {
@@ -135,8 +136,8 @@ const PrivateRoute = ({ children, module }: PrivateRouteProps) => {
             active_icon: visitorActive,
             sub_menus: [],
             index: 2,
-            url: "admin/manage-visitors",
-            module: "manage-visitors",
+            url: "admin/cards",
+            module: "cards",
         },
         // {
         //     name: "Manage Device",
@@ -441,32 +442,6 @@ export const Layout = () => (
                     }
                 />
 
-                <Route
-                    path="/admin/manage-devices"
-                    element={
-                        <PrivateRoute module="cards">
-                            <ManageDeviceListing />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-devices/edit/:id"
-                    element={
-                        <PrivateRoute module="cards">
-                            <EditDeviceInformation />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-devices/logs"
-                    element={
-                        <PrivateRoute module="cards">
-                            <LogsListing />
-                        </PrivateRoute>
-                    }
-                />
 
                 {/* Cards Module routes*/}
 
@@ -488,26 +463,16 @@ export const Layout = () => (
                     }
                 />
 
+                <Route
+                    path="/admin/cards/print-preview/:id"
+                    element={
+                        <PrivateRoute module="cards">
+                            <PrintPreview />
+                        </PrivateRoute>
+                    }
+                />
+
                 {/* Cards Module routes*/}
-
-
-                <Route
-                    path="/admin/manage-visitors"
-                    element={
-                        <PrivateRoute module="cards">
-                            <AllCardsListing />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-visitors/view-visitor/:id"
-                    element={
-                        <PrivateRoute module="cards">
-                            <ViewCardInfomration />
-                        </PrivateRoute>
-                    }
-                />
 
                 {/* Login and Sign up Routes */}
                 <>
