@@ -45,6 +45,7 @@ import LogsListing from "../components/Pages/ManageDevice/ViewLogs/Listing/LogsL
 import ViewCardInfomration from "../components/Pages/Cards/View/View";
 import EditDeviceInformation from "../components/Pages/ManageDevice/Edit/Edit";
 import VisitorUploadPage from "../components/Pages/VisitorUpload";
+import PrintPreview from "../components/Pages/Cards/View/PrintPreview";
 
 
 type Children = {
@@ -458,6 +459,15 @@ export const Layout = () => (
                     element={
                         <PrivateRoute module="cards">
                             <ViewCardInfomration />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/admin/cards/print-preview/:id"
+                    element={
+                        <PrivateRoute module="cards">
+                            <PrintPreview />
                         </PrivateRoute>
                     }
                 />

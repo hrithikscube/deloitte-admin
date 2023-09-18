@@ -1,11 +1,9 @@
 import CircularProgress from '@mui/material/CircularProgress'
-import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ViewCardInfomration = () => {
-    let { id } = useParams()
-
     const cardFrontDetails = [
         {
             name: 'employee name',
@@ -91,8 +89,15 @@ const ViewCardInfomration = () => {
             ) : (
                 <div className="">
 
-                    <div className='border rounded-lg p-5 bg-white '>
-                        <p className='text-sm font-nunitoMedium text-gray-500'>All Cards  &gt;  <span className='text-black font-nunitoMedium'>View Details</span></p>
+                    <div className='border rounded-lg p-5 bg-white w-full flex items-center gap-2'>
+
+                        <Link to="/admin/cards">
+                            <p className='text-sm font-nunitoMedium text-gray-500 cursor-pointer'>
+                                All Cards &gt;
+                            </p>
+                        </Link>
+                        <p className='text-black font-nunitoMedium text-sm'>View Details</p>
+
                     </div>
 
                     <br />
@@ -134,7 +139,7 @@ const ViewCardInfomration = () => {
 
                     <br />
 
-                    <div>
+                    {/*  <div>
 
                         <div className='flex items-center gap-5'>
                             <p className='text-base font-nunitoBold '>Card Information</p>
@@ -172,7 +177,7 @@ const ViewCardInfomration = () => {
                         }
 
 
-                    </div>
+                    </div> */}
                 </div>
             )}
         </>
