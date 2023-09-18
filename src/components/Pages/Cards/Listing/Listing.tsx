@@ -184,7 +184,7 @@ const AllCardsListing = () => {
                             <div className="w-full  sm:w-[600px]">
                                 <SelectInput
                                     width="100%"
-                                    options={filterList.designations}
+                                    options={["hello1", "hello2"]}
                                     handleChange={onFilterChange}
                                     value={params.designation}
                                     label="Designation"
@@ -195,7 +195,7 @@ const AllCardsListing = () => {
                             <div className="w-full  sm:w-[600px]">
                                 <SelectInput
                                     width="100%"
-                                    options={statusData}
+                                    options={["hello1", "hello2"]}
                                     handleChange={onFilterChange}
                                     value={params.status}
                                     label="Active/Inactive"
