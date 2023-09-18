@@ -33,7 +33,7 @@ export const DateRangePicker: React.FC<Props> = ({
   }, [endDate])
   return (
    <ClickAwayListener onClickAway={()=>setOpen(false)}>
-     <div className='bg-white h-12 sm:h-14 px-2 flex justify-between rounded-lg items-center gap-2 sm:gap-5 date-range-picker  border hover:border-2 cursor-pointer hover:border-primarBtn  border-[#E7E8ED] '>
+     <div className='bg-white h-12 sm:h-14 px-2 flex justify-between rounded-lg items-center gap-2 sm:gap-5 date-range-picker  border hover:border-2 cursor-pointer hover:border-[#86BC24]  border-[#86BC24] '>
       <div>
         <label
           htmlFor={label}

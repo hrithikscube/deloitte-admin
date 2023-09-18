@@ -46,6 +46,7 @@ module.exports = {
                 AzureishWhite: "#D8D9F17A",
                 OuterSpace: "#CDD4D8",
                 Gunmetal: "#2B2C34",
+                PrimaryGreen : "#86BC24"
             },
         },
     },

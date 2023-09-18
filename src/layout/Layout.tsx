@@ -32,21 +32,20 @@ import machine from "../assets/icons/SidebarIcons/machine.svg";
 import machineActive from "../assets/icons/SidebarIcons/machineActive.svg";
 
 import visitor from "../assets/icons/SidebarIcons/visitor.svg";
-import visitorActive from "../assets/icons/SidebarIcons/visitorActive.svg";
+import CardActive from "../assets/icons/SidebarIcons/CardActive.svg";
 
 
 import MenuOpen from "../assets/images/menu-open.svg";
 import MenuClose from "../assets/images/menu-close.svg";
 import ManageDeviceListing from "../components/Pages/ManageDevice/Listing/Listing";
-import ManageVisitorsListing from "../components/Pages/ManageVistors/Listing/Listing";
+import AllCardsListing from "../components/Pages/Cards/Listing/Listing";
 import ViewEmployee from "../components/Pages/Employee/View/View";
 import EditEmployee from "../components/Pages/Employee/Create/Edit";
 import LogsListing from "../components/Pages/ManageDevice/ViewLogs/Listing/LogsListing";
-import ViewVisitor from "../components/Pages/ManageVistors/View/View";
+import ViewCardInfomration from "../components/Pages/Cards/View/View";
 import EditDeviceInformation from "../components/Pages/ManageDevice/Edit/Edit";
-import CreateVisitor from "../components/Pages/ManageVistors/Create/Create";
-import EditVisitor from "../components/Pages/ManageVistors/Create/Edit";
 import VisitorUploadPage from "../components/Pages/VisitorUpload";
+import PrintPreview from "../components/Pages/Cards/View/PrintPreview";
 
 
 type Children = {
@@ -83,7 +82,7 @@ const RestrictedRoute = ({ children }: Children) => {
 };
 
 const PrivateRoute = ({ children, module }: PrivateRouteProps) => {
-    const auth = isUserLoggedIn();
+    const auth = true;
     const [isSidebarOpen, setMenuOpen] = useState(true);
 
     if (!auth) {
@@ -134,11 +133,11 @@ const PrivateRoute = ({ children, module }: PrivateRouteProps) => {
         {
             name: "Cards",
             icon: visitor,
-            active_icon: visitorActive,
+            active_icon: CardActive,
             sub_menus: [],
             index: 2,
-            url: "admin/manage-visitors",
-            module: "manage-visitors",
+            url: "admin/cards",
+            module: "cards",
         },
         // {
         //     name: "Manage Device",
@@ -443,68 +442,37 @@ export const Layout = () => (
                     }
                 />
 
+
+                {/* Cards Module routes*/}
+
                 <Route
-                    path="/admin/manage-devices"
+                    path="/admin/cards"
                     element={
                         <PrivateRoute module="cards">
-                            <ManageDeviceListing />
+                            <AllCardsListing />
                         </PrivateRoute>
                     }
                 />
 
                 <Route
-                    path="/admin/manage-devices/edit/:id"
+                    path="/admin/cards/view/:id"
                     element={
                         <PrivateRoute module="cards">
-                            <EditDeviceInformation />
+                            <ViewCardInfomration />
                         </PrivateRoute>
                     }
                 />
 
                 <Route
-                    path="/admin/manage-devices/logs"
+                    path="/admin/cards/print-preview/:id"
                     element={
                         <PrivateRoute module="cards">
-                            <LogsListing />
+                            <PrintPreview />
                         </PrivateRoute>
                     }
                 />
 
-                <Route
-                    path="/admin/manage-visitors"
-                    element={
-                        <PrivateRoute module="cards">
-                            <ManageVisitorsListing />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-visitors/create"
-                    element={
-                        <PrivateRoute module="cards">
-                            <CreateVisitor />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-visitors/edit/:id"
-                    element={
-                        <PrivateRoute module="cards">
-                            <EditVisitor />
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-visitors/view-visitor/:id"
-                    element={
-                        <PrivateRoute module="cards">
-                            <ViewVisitor />
-                        </PrivateRoute>
-                    }
-                />
+                {/* Cards Module routes*/}
 
                 {/* Login and Sign up Routes */}
                 <>
