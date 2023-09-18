@@ -106,7 +106,7 @@ export const Pagination = (props: any) => {
             </ul>
             <div className="relative items-center justify-center hidden space-x-2 lg:flex text-SpaceCadet pagination-goto">
                 <p className="text-sm">Go to Page:</p>
-                <div className="h-[40px] w-[84px] pagination-input-sec relative px-2 lg:flex justify-center items-center rounded-md border border-[#141C4C]  bg-transparent hover:border-[2px] hover:border-[#FF8059]  hidden">
+                <div className="h-[40px] w-[84px] pagination-input-sec relative px-2 lg:flex justify-center items-center rounded-md border border-[#141C4C]  bg-transparent hover:border-[2px] hover:border-[#86BC24]  hidden">
                     <input
                         type="text"
                         value={customPageNo}

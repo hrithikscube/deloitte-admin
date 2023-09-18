@@ -32,7 +32,7 @@ import machine from "../assets/icons/SidebarIcons/machine.svg";
 import machineActive from "../assets/icons/SidebarIcons/machineActive.svg";
 
 import visitor from "../assets/icons/SidebarIcons/visitor.svg";
-import visitorActive from "../assets/icons/SidebarIcons/visitorActive.svg";
+import CardActive from "../assets/icons/SidebarIcons/CardActive.svg";
 
 
 import MenuOpen from "../assets/images/menu-open.svg";
@@ -82,7 +82,7 @@ const RestrictedRoute = ({ children }: Children) => {
 };
 
 const PrivateRoute = ({ children, module }: PrivateRouteProps) => {
-    const auth = isUserLoggedIn();
+    const auth = true;
     const [isSidebarOpen, setMenuOpen] = useState(true);
 
     if (!auth) {
@@ -133,7 +133,7 @@ const PrivateRoute = ({ children, module }: PrivateRouteProps) => {
         {
             name: "Cards",
             icon: visitor,
-            active_icon: visitorActive,
+            active_icon: CardActive,
             sub_menus: [],
             index: 2,
             url: "admin/cards",

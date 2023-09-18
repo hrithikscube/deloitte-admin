@@ -30,8 +30,8 @@ const CustomButton: React.FC<Props> = ({
     border: '1px solid #141C4C',
     color: '#141C4C',
     '&:hover': {
-      border: '1px solid #FF8059',
-      backgroundColor: '#FF8059',
+      border: '1px solid #86BC24',
+      backgroundColor: '#86BC24',
     },
     '&:active': {
       background: 'rgba(20, 28, 76, 0.1);',
@@ -42,16 +42,16 @@ const CustomButton: React.FC<Props> = ({
     border: 'none',
     color: '#fff',
     fontWeight: '700',
-    background: isdeletebtn ? '#EF4949' : '#FF8059',
-    backgroundColor: isdeletebtn ? '#EF4949' : '#FF8059',
+    background: isdeletebtn ? '#EF4949' : '#86BC24',
+    backgroundColor: isdeletebtn ? '#EF4949' : '#86BC24',
     '&:hover': {
       border: 'none',
-      background: isdeletebtn ? '#EF4949' : '#FF8059',
-      backgroundColor: isdeletebtn ? '#EF4949' : '#FF8059',
+      background: isdeletebtn ? '#EF4949' : '#86BC24',
+      backgroundColor: isdeletebtn ? '#EF4949' : '#86BC24',
       opacity: isdeletebtn ? '0.8' : '',
     },
     '&:active': {
-      background: isdeletebtn ? '#EF4949' : '#FF8059',
+      background: isdeletebtn ? '#EF4949' : '#86BC24',
     },
   }
 
